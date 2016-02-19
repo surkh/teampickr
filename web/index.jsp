@@ -23,10 +23,6 @@
             <input
                     type="checkbox"
                     ng-model="player.playing"
-
-            <%--The following needed for form submission--%>
-                    id="playing[]"
-                    value="{{ player.id }}"
             >
             <span>
                 {{ player.id }}
@@ -62,7 +58,7 @@
             <td  ></td>
             <td >
                 <table  >
-                    <tr ng-repeat="player in playing">
+                    <tr ng-repeat="player in players | filter: { playing: true } ">
                         <td style="color: red">&LessLess; </td>
                         <td> {{ player.id }}</td>
                         <td style="color: white">&GreaterGreater;</td>
@@ -86,21 +82,8 @@
     app.controller('myCtrl', ['$scope', 'filterFilter', function ($scope) {
 
 
-        $scope.playing = [];
         $scope.teamWhite = [];
         $scope.teamRed = [];
-
-        // helper method to get selected fruits
-        $scope.playing = function playing() {
-            return filterFilter($scope.players, {playing: true});
-        };
-
-        // watch fruits for changes
-        $scope.$watch('players|filter:{playing:true}', function (nv) {
-            $scope.playing = nv.map(function (player) {
-                return player;
-            });
-        }, true);
 
         $scope.checkAll = function () {
             if ($scope.selectedAll) {
