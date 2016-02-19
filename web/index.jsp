@@ -11,28 +11,72 @@
     <title>teampickr</title>
 </head>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-<body>
+<body
+        style="background-color: lightgreen; font-family: Corbel; font-size: large"
+>
 
 <div ng-app="myApp" ng-controller="myCtrl">
 
 
-    <div>
+    <div style="float:left">
         <div ng-repeat="player in players">
             <input
                     type="checkbox"
-                    name="playing[]"
-                    value="{{ player.name }}"
                     ng-model="player.playing"
+
+            <%--The following needed for form submission--%>
+                    id="playing[]"
+                    value="{{ player.id }}"
             >
             <span>
-                {{ player.name }}
+                {{ player.id }}
             </span>
         </div>
     </div>
 
-    <div>
-        {{ playing }}
-    </div>
+    <table style="font-size: xx-large">
+        <tr>
+            <td style="background-color: red; width: 300px">
+                <div  >
+                    Red
+                </div>
+            </td>
+            <td style="width: 50px;" ></td>
+            <td style="background-color: lightgray; width: 300px">
+                <div  >
+                    Playing
+                </div>
+            </td>
+            <td style="width: 50px;" ></td>
+            <td style="background-color: white; width: 300px">
+                <div >
+                    White
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td >
+                <div  >
+                </div>
+            </td>
+            <td  ></td>
+            <td >
+                <table  >
+                    <tr ng-repeat="player in playing">
+                        <td style="color: red">&LessLess; </td>
+                        <td> {{ player.id }}</td>
+                        <td style="color: white">&GreaterGreater;</td>
+                    </tr>
+                </table>
+            </td>
+            <td  ></td>
+            <td >
+                <div >
+                </div>
+            </td>
+        </tr>
+    </table>
+
 
 </div>
 
@@ -71,27 +115,27 @@
         };
 
         $scope.players = [
-            {name: "Sibiao"},
-            {name: "Gowri"},
-            {name: "Surkhab"},
-            {name: "Mike H."},
-            {name: "Tanvir"},
-            {name: "Peter"},
-            {name: "Nick H"},
-            {name: "Nik K"},
-            {name: "Zareh"},
-            {name: "Dom"},
-            {name: "Abhishek"},
-            {name: "Ed"},
-            {name: "Raghu"},
-            {name: "Darin"},
-            {name: "Rudy"},
-            {name: "Anthony"},
-            {name: "Chun"},
-            {name: "David S."},
-            {name: "Marcos"},
-            {name: "Al"},
-            {name: "Michael S."},
+            {id: "Sibiao"},
+            {id: "Gowri"},
+            {id: "Surkhab"},
+            {id: "MikeH"},
+            {id: "Tanvir"},
+            {id: "Peter"},
+            {id: "NickH"},
+            {id: "NikK"},
+            {id: "Zareh"},
+            {id: "Dom"},
+            {id: "Abhishek"},
+            {id: "Ed"},
+            {id: "Raghu"},
+            {id: "Darin"},
+            {id: "Rudy"},
+            {id: "Anthony"},
+            {id: "Chun"},
+            {id: "DavidS"},
+            {id: "Marcos"},
+            {id: "Al"},
+            {id: "MichaelS"},
         ];
 
     }
