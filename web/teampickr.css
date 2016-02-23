@@ -1,5 +1,5 @@
 .playingField {
-    font-size: x-large;
+    font-size: large;
     background-color: limegreen;
     border: 4px white solid;
 }
@@ -36,13 +36,14 @@
 
 body {
     background-color: saddlebrown;
-    font-family: Corbel;
+    font-family: "Malgun Gothic", sans-serif;
     font-size: large;
 }
 
 .playerSelector {
     float: left;
-    font-size: x-large;
+    font-size: large;
+    padding-right: 50px;
 }
 
 .redHeader {
