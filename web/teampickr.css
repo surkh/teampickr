@@ -29,8 +29,8 @@
     border-bottom: 1px solid white;
 }
 
-.playerName {
-    text-align: center;
+.playerCell {
+    text-align: left;
     color: white;
 }
 
@@ -75,4 +75,9 @@ body {
 
 .playerDeselector {
     color: black;
+    text-align: center;
+}
+
+.playerCell .namePlate{
+    width: 150px    ;
 }

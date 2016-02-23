@@ -4,19 +4,14 @@
     <title>teampickr</title>
     <link rel="stylesheet" href="teampickr.css">
 </head>
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
 <body >
 
 <div ng-app="myApp" ng-controller="myCtrl">
-
-
     <div class="playerSelector">
-        <div ng-repeat="player in players">
-            <input
-                    type="checkbox"
-                    ng-model="player.playing"
-            >
-            <span>
+        Not playing:
+        <div ng-repeat="player in players | filter: {playing: false} ">
+            <span ng-click="player.playing = true">
                 {{ player.id }}
             </span>
         </div>
@@ -50,25 +45,29 @@
                         <th></th>
                     </tr>
                     <tr class="extraPlayer" ng-repeat="player in players | filter: { playing: true } | filter: { team: 'red' } ">
-                        <td class="playerName"> {{ player.id }}</td>
+                        <td class="playerCell"> {{ player.id }}</td>
                         <td class="redDeselector" ng-click="assignTeam(player,null)" >X</td>
                     </tr>
                 </table>
             </td>
+            </td>
             <td  ></td>
             <td >
                 <table class="playerList">
-                    <th>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </th>
-                    <tr class="extraPlayer" ng-repeat="player in players | filter: { playing: true } | filter: { team: '!' } ">
+                    <tr class="extraPlayer" ng-repeat="player in (ranked = (players | filter: { playing: true } | filter: { team: '!' } | orderBy : 'rank')) ">
                         <td class="redPicker" ng-click="assignTeam(player,'red')" >&LessLess; </td>
-                        <td class="playerName">
-                            <div> {{ player.id }} </div>
-                            <div class="playerDeselector">X</div>
+                        <td class="spacerColumn"></td>
+                        <td class="playerDeselector" ng-click="player.playing = false" >X</td>
+                        <td class="playerCell">
+                            <span class="namePlate"> {{ player.id }} </span>
                         </td>
+                        <td> </td>
+                        <td class="playerDeselector" >
+                            <span ng-click="rankSwap(player, ranked[$index - 1])">↑</span>
+                            <span ng-click="rankSwap(player, ranked[$index + 1])">↓</span>
+                        </td>
+                        <td class="spacerColumn"></td>
+
                         <td class="whitePicker" ng-click="assignTeam(player,'white')" >&GreaterGreater;</td>
                     </tr>
                 </table>
@@ -82,12 +81,13 @@
                     </tr>
                     <tr class="extraPlayer" ng-repeat="player in players | filter: { playing: true } | filter: { team: 'white' } ">
                         <td class="whiteDeselector" ng-click="assignTeam(player,null)" >X</td>
-                        <td class="playerName"> {{ player.id }}</td>
+                        <td class="playerCell"> {{ player.id }}</td>
                     </tr>
                 </table>
             </td>
         </tr>
     </table>
+
 
 
 </div>
@@ -100,6 +100,8 @@
 
         $scope.teamWhite = [];
         $scope.teamRed = [];
+
+        $scope.outputText = 'Hello';
 
         $scope.checkAll = function () {
             if ($scope.selectedAll) {
@@ -115,7 +117,15 @@
 
         $scope.assignTeam = function(player,team){
             player.team = team;
-        }
+        };
+
+        $scope.rankSwap = function (player1, player2) {
+            if (player2) {
+                var swap = player1.rank;
+                player1.rank = player2.rank;
+                player2.rank = swap;
+            }
+        };
 
         $scope.players = [
             {id: "Sibiao"},
@@ -140,6 +150,25 @@
             {id: "Al"},
             {id: "MichaelS"},
         ];
+
+
+        angular.forEach($scope.players, function (value, key) {
+            value.playing=true;
+            value.rank = key;
+        })
+
+        var num = 6;
+
+        $scope.items = [5,4,3,2,1];
+
+        $scope.addNum = function (){
+            $scope.items.unshift(num++);
+        };
+
+        $scope.remNum = function (){
+            $scope.items.shift();
+        }
+
 
     }
 
