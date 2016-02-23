@@ -44,28 +44,47 @@
         </tr>
         <tr>
             <td >
-                <div  >
-                </div>
-            </td>
-            <td  ></td>
-            <td >
-                <table class="extras">
-                    <th>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </th>
-                    <tr class="extraPlayer" ng-repeat="player in players | filter: { playing: true } ">
-                        <td class="redPicker">&LessLess; </td>
+                <table class="playerList">
+                    <tr>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <tr class="extraPlayer" ng-repeat="player in players | filter: { playing: true } | filter: { team: 'red' } ">
                         <td class="playerName"> {{ player.id }}</td>
-                        <td class="whitePicker">&GreaterGreater;</td>
+                        <td class="redDeselector" ng-click="assignTeam(player,null)" >X</td>
                     </tr>
                 </table>
             </td>
             <td  ></td>
             <td >
-                <div >
-                </div>
+                <table class="playerList">
+                    <th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </th>
+                    <tr class="extraPlayer" ng-repeat="player in players | filter: { playing: true } | filter: { team: '!' } ">
+                        <td class="redPicker" ng-click="assignTeam(player,'red')" >&LessLess; </td>
+                        <td class="playerName">
+                            <div> {{ player.id }} </div>
+                            <div class="playerDeselector">X</div>
+                        </td>
+                        <td class="whitePicker" ng-click="assignTeam(player,'white')" >&GreaterGreater;</td>
+                    </tr>
+                </table>
+            </td>
+            <td  ></td>
+            <td >
+                <table class="playerList">
+                    <tr>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <tr class="extraPlayer" ng-repeat="player in players | filter: { playing: true } | filter: { team: 'white' } ">
+                        <td class="whiteDeselector" ng-click="assignTeam(player,null)" >X</td>
+                        <td class="playerName"> {{ player.id }}</td>
+                    </tr>
+                </table>
             </td>
         </tr>
     </table>
@@ -93,6 +112,10 @@
             });
 
         };
+
+        $scope.assignTeam = function(player,team){
+            player.team = team;
+        }
 
         $scope.players = [
             {id: "Sibiao"},
