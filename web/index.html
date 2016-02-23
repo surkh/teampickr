@@ -45,7 +45,7 @@
                         <th></th>
                         <th></th>
                     </tr>
-                    <tr class="extraPlayer" ng-repeat="player in players | filter: { playing: true } | filter: { team: 'red' } ">
+                    <tr class="extraPlayer" ng-repeat="player in players | filter: { playing: true } | filter: { team: 'red' } | orderBy : 'rank' ">
                         <td class="playerCell"> {{ player.id }}</td>
                         <td class="redDeselector" ng-click="assignTeam(player,null)" >X</td>
                     </tr>
@@ -80,7 +80,7 @@
                         <th></th>
                         <th></th>
                     </tr>
-                    <tr class="extraPlayer" ng-repeat="player in players | filter: { playing: true } | filter: { team: 'white' } ">
+                    <tr class="extraPlayer" ng-repeat="player in players | filter: { playing: true } | filter: { team: 'white' } | orderBy : 'rank' ">
                         <td class="whiteDeselector" ng-click="assignTeam(player,null)" >X</td>
                         <td class="playerCell"> {{ player.id }}</td>
                     </tr>
@@ -125,27 +125,29 @@
         };
 
         $scope.players = [
-            {id: "Sibiao"},
-            {id: "Gowri"},
-            {id: "Surkhab"},
             {id: "MikeH"},
-            {id: "Tanvir"},
-            {id: "Peter"},
-            {id: "NickH"},
-            {id: "NikK"},
-            {id: "Zareh"},
-            {id: "Dom"},
-            {id: "Abhishek"},
-            {id: "Ed"},
-            {id: "Raghu"},
             {id: "Darin"},
-            {id: "Rudy"},
-            {id: "Anthony"},
-            {id: "Chun"},
-            {id: "DavidS"},
             {id: "Marcos"},
-            {id: "Al"},
+            {id: "Dom"},
+            {id: "Zareh"},
+            {id: "Tanvir"},
+            {id: "DavidS"},
+            {id: "Ed"},
+            {id: "Anthony"},
+            {id: "Gary"},
+            {id: "Sibiao"},
+            {id: "Peter"},
+            {id: "NikK"},
+            {id: "NickH"},
+            {id: "Abhishek"},
+            {id: "Gowri"},
+            {id: "Raghu"},
             {id: "MichaelS"},
+            {id: "Rudy"},
+            {id: "Chun"},
+            {id: "Al"},
+            {id: "Eric"},
+            {id: "Surkhab"},
         ];
 
 
