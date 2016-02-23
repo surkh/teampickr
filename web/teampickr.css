@@ -1,0 +1,65 @@
+.playingField {
+    font-size: x-large;
+    background-color: limegreen;
+    border: 4px white solid;
+}
+
+.extras {
+    width: 100%;
+    height: 35px;
+    border: 2px white solid;
+}
+
+.redPicker {
+    color: white;
+    background-color: red;
+}
+
+.whitePicker {
+    color: black;
+    background-color: white;
+    text-align: right;
+}
+
+.extraPlayer {
+    border: 2px tomato solid;
+}
+
+.extras th, td {
+    border-bottom: 1px solid white;
+}
+
+.playerName {
+    text-align: center;
+    color: white;
+}
+
+body {
+    background-color: saddlebrown;
+    font-family: Corbel;
+    font-size: large;
+}
+
+.playerSelector {
+    float: left;
+    font-size: x-large;
+}
+
+.redHeader {
+    background-color: red;
+    width: 300px;
+}
+
+.whiteHeader {
+    background-color: white;
+    width: 300px;
+}
+
+.spacerColumn {
+    width: 50px;
+}
+
+.extrasHeader {
+    background-color: lightgray;
+    width: 300px
+}

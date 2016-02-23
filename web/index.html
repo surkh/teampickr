@@ -1,24 +1,16 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: sn6628
-  Date: 2/18/2016
-  Time: 5:11 PM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>teampickr</title>
+    <link rel="stylesheet" href="teampickr.css">
 </head>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-<body
-        style="background-color: lightgreen; font-family: Corbel; font-size: large"
->
+<body >
 
 <div ng-app="myApp" ng-controller="myCtrl">
 
 
-    <div style="float:left">
+    <div class="playerSelector">
         <div ng-repeat="player in players">
             <input
                     type="checkbox"
@@ -30,23 +22,23 @@
         </div>
     </div>
 
-    <table style="font-size: xx-large">
+    <table class="playingField" >
         <tr>
-            <td style="background-color: red; width: 300px">
+            <td class="redHeader">
                 <div  >
-                    Red
+                    Team Red
                 </div>
             </td>
-            <td style="width: 50px;" ></td>
-            <td style="background-color: lightgray; width: 300px">
+            <td class="spacerColumn" ></td>
+            <td class="extrasHeader">
                 <div  >
-                    Playing
+                    Playing (Extra)
                 </div>
             </td>
-            <td style="width: 50px;" ></td>
-            <td style="background-color: white; width: 300px">
+            <td class="spacerColumn"></td>
+            <td class="whiteHeader">
                 <div >
-                    White
+                    Team White
                 </div>
             </td>
         </tr>
@@ -57,11 +49,16 @@
             </td>
             <td  ></td>
             <td >
-                <table  >
-                    <tr ng-repeat="player in players | filter: { playing: true } ">
-                        <td style="color: red">&LessLess; </td>
-                        <td> {{ player.id }}</td>
-                        <td style="color: white">&GreaterGreater;</td>
+                <table class="extras">
+                    <th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </th>
+                    <tr class="extraPlayer" ng-repeat="player in players | filter: { playing: true } ">
+                        <td class="redPicker">&LessLess; </td>
+                        <td class="playerName"> {{ player.id }}</td>
+                        <td class="whitePicker">&GreaterGreater;</td>
                     </tr>
                 </table>
             </td>
