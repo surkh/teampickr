@@ -9,7 +9,7 @@
 
 <div ng-app="myApp" ng-controller="myCtrl">
     <div class="playerSelector">
-        Not playing:
+        <strong>Not playing:</strong>
         <div ng-repeat="player in players | filter: {playing: false} ">
             <span ng-click="player.playing = true">
                 {{ player.id }}
@@ -38,7 +38,7 @@
             </td>
         </tr>
         <tr>
-            <td >
+            <td style="vertical-align: top" >
                 <table class="playerList">
                     <tr>
                         <th></th>
@@ -52,7 +52,7 @@
             </td>
             </td>
             <td  ></td>
-            <td >
+            <td style="vertical-align: top">
                 <table class="playerList">
                     <tr class="extraPlayer" ng-repeat="player in (ranked = (players | filter: { playing: true } | filter: { team: '!' } | orderBy : 'rank')) ">
                         <td class="redPicker" ng-click="assignTeam(player,'red')" >&LessLess; </td>
@@ -73,7 +73,7 @@
                 </table>
             </td>
             <td  ></td>
-            <td >
+            <td style="vertical-align: top">
                 <table class="playerList">
                     <tr>
                         <th></th>
