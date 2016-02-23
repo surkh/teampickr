@@ -26,9 +26,10 @@
             </td>
             <td class="spacerColumn" ></td>
             <td class="extrasHeader">
-                <div  >
+                <span  >
                     Playing (Extra)
-                </div>
+                </span>
+                <button type="button" ng-click="autoAssign()">Auto-assign</button>
             </td>
             <td class="spacerColumn"></td>
             <td class="whiteHeader">
@@ -101,18 +102,14 @@
         $scope.teamWhite = [];
         $scope.teamRed = [];
 
-        $scope.outputText = 'Hello';
-
-        $scope.checkAll = function () {
-            if ($scope.selectedAll) {
-                $scope.selectedAll = true;
-            } else {
-                $scope.selectedAll = false;
-            }
-            angular.forEach($scope.players, function (player) {
-                player.selected = $scope.selectedAll;
-            });
-
+        $scope.autoAssign = function(){
+            var isRed = true;
+            angular.forEach($scope.players, function (player, key) {
+                if (player.playing && !player.team) {
+                    player.team = isRed ? 'red' : 'white';
+                    isRed = !isRed;
+                }
+            })
         };
 
         $scope.assignTeam = function(player,team){
