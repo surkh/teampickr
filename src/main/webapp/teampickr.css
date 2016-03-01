@@ -1,0 +1,86 @@
+.playingField {
+    font-size: large;
+    background-color: limegreen;
+    border: 4px white solid;
+}
+
+.playerList {
+    vertical-align: top;
+    width: 100%;
+    height: 35px;
+    border: 2px white solid;
+}
+
+.redPicker {
+    color: white;
+    background-color: red;
+}
+
+.whitePicker {
+    color: black;
+    background-color: white;
+    text-align: right;
+}
+
+.extraPlayer {
+    border: 2px tomato solid;
+}
+
+.playerList th, td {
+    border-bottom: 1px solid white;
+}
+
+.playerCell {
+    text-align: left;
+    color: white;
+}
+
+body {
+    background-color: saddlebrown;
+    font-family: "Malgun Gothic", sans-serif;
+    font-size: large;
+}
+
+.playerSelector {
+    float: left;
+    font-size: large;
+    padding-right: 50px;
+}
+
+.redHeader {
+    background-color: red;
+    width: 300px;
+    border: 1px solid white;
+    text-align: center;
+}
+
+.whiteHeader {
+    background-color: white;
+    width: 300px;
+}
+
+.spacerColumn {
+    width: 50px;
+}
+
+.extrasHeader {
+    background-color: lightgray;
+    width: 300px
+}
+
+.redDeselector {
+    text-align: right;
+}
+
+.wileDeselector {
+    text-align: left;
+}
+
+.playerDeselector {
+    color: black;
+    text-align: center;
+}
+
+.playerCell .namePlate{
+    width: 150px    ;
+}
