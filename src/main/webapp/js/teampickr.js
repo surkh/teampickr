@@ -253,7 +253,7 @@ app.controller('myCtrl', ['$scope', 'filterFilter', 'gapiService', function ($sc
 
     $scope.load = function () {
         $scope.message = "Loading...";
-        $scope.$apply();
+        $scope.$applyAsync();
         gapi.client.helloworld.teams.listGreeting().execute(
             function(resp) {
                 if (!resp.code) {
@@ -261,16 +261,16 @@ app.controller('myCtrl', ['$scope', 'filterFilter', 'gapiService', function ($sc
                     angular.forEach(resp.items, function (item, key) {
                         $scope.players.push(
                             {
-                                id: item.message,
+                                id: item.id,
                                 playing: true
                             }
                         )
                     });
                     $scope.message = "Loaded...";
-                    $scope.$apply();
+                    $scope.$applyAsync();
                 }
             });
-    }
+    };
     
     // $scope.load();
 

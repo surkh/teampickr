@@ -21,44 +21,44 @@ import javax.inject.Named;
 )
 public class Teams {
 
-  public static ArrayList<HelloGreeting> players = new ArrayList<HelloGreeting>();
+  public static ArrayList<Player> players = new ArrayList<Player>();
 
   static {
-    players.add(new HelloGreeting("surkh"));
-    players.add(new HelloGreeting("darin"));
-    players.add(new HelloGreeting("Abhishek"));
-    players.add(new HelloGreeting("Al"));
-    players.add(new HelloGreeting("Aleks"));
-    players.add(new HelloGreeting("Anthony"));
-    players.add(new HelloGreeting("Chun"));
-    players.add(new HelloGreeting("Dan"));
-    players.add(new HelloGreeting("Darin"));
-    players.add(new HelloGreeting("DavidC"));
-    players.add(new HelloGreeting("DavidH"));
-    players.add(new HelloGreeting("DavidS"));
-    players.add(new HelloGreeting("Dom"));
-    players.add(new HelloGreeting("Ed"));
-    players.add(new HelloGreeting("Eric"));
-    players.add(new HelloGreeting("Gary"));
-    players.add(new HelloGreeting("Gowri"));
-    players.add(new HelloGreeting("Marcos"));
-    players.add(new HelloGreeting("MichaelS"));
-    players.add(new HelloGreeting("MikeH"));
-    players.add(new HelloGreeting("Ming"));
-    players.add(new HelloGreeting("NickH"));
-    players.add(new HelloGreeting("NikK"));
-    players.add(new HelloGreeting("Paul"));
-    players.add(new HelloGreeting("Peter"));
-    players.add(new HelloGreeting("Raghu"));
-    players.add(new HelloGreeting("Rudy"));
-    players.add(new HelloGreeting("Senthil"));
-    players.add(new HelloGreeting("Sibiao"));
-    players.add(new HelloGreeting("Surkhab"));
-    players.add(new HelloGreeting("Tanvir"));
-    players.add(new HelloGreeting("Zareh"));
+    players.add(new Player("surkh"));
+    players.add(new Player("darin"));
+    players.add(new Player("Abhishek"));
+    players.add(new Player("Al"));
+    players.add(new Player("Aleks"));
+    players.add(new Player("Anthony"));
+    players.add(new Player("Chun"));
+    players.add(new Player("Dan"));
+    players.add(new Player("Darin"));
+    players.add(new Player("DavidC"));
+    players.add(new Player("DavidH"));
+    players.add(new Player("DavidS"));
+    players.add(new Player("Dom"));
+    players.add(new Player("Ed"));
+    players.add(new Player("Eric"));
+    players.add(new Player("Gary"));
+    players.add(new Player("Gowri"));
+    players.add(new Player("Marcos"));
+    players.add(new Player("MichaelS"));
+    players.add(new Player("MikeH"));
+    players.add(new Player("Ming"));
+    players.add(new Player("NickH"));
+    players.add(new Player("NikK"));
+    players.add(new Player("Paul"));
+    players.add(new Player("Peter"));
+    players.add(new Player("Raghu"));
+    players.add(new Player("Rudy"));
+    players.add(new Player("Senthil"));
+    players.add(new Player("Sibiao"));
+    players.add(new Player("Surkhab"));
+    players.add(new Player("Tanvir"));
+    players.add(new Player("Zareh"));
   }
 
-  public HelloGreeting getGreeting(@Named("id") Integer id) throws NotFoundException {
+  public Player getGreeting(@Named("id") Integer id) throws NotFoundException {
     try {
       return players.get(id);
     } catch (IndexOutOfBoundsException e) {
@@ -66,24 +66,28 @@ public class Teams {
     }
   }
 
-  public ArrayList<HelloGreeting> listGreeting() {
+  public ArrayList<Player> listGreeting() {
     return players;
   }
 
+  public String[] myMessage() {
+    return new String[]{"This is my message"};
+  }
+
   @ApiMethod(name = "greetings.multiply", httpMethod = "post")
-  public HelloGreeting insertGreeting(@Named("times") Integer times, HelloGreeting greeting) {
-    HelloGreeting response = new HelloGreeting();
+  public Player insertGreeting(@Named("times") Integer times, Player greeting) {
+    Player response = new Player();
     StringBuilder responseBuilder = new StringBuilder();
     for (int i = 0; i < times; i++) {
-      responseBuilder.append(greeting.getMessage());
+      responseBuilder.append(greeting.getId());
     }
-    response.setMessage(responseBuilder.toString());
+    response.setId(responseBuilder.toString());
     return response;
   }
 
   @ApiMethod(name = "greetings.authed", path = "hellogreeting/authed")
-  public HelloGreeting authedGreeting(User user) {
-    HelloGreeting response = new HelloGreeting("hello " + user.getEmail());
+  public Player authedGreeting(User user) {
+    Player response = new Player("hello " + user.getEmail());
     return response;
   }
 }
