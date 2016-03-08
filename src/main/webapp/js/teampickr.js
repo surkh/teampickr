@@ -253,6 +253,7 @@ app.controller('myCtrl', ['$scope', 'filterFilter', 'gapiService', function ($sc
 
     $scope.load = function () {
         $scope.message = "Loading...";
+        $scope.$apply();
         gapi.client.helloworld.teams.listGreeting().execute(
             function(resp) {
                 if (!resp.code) {
