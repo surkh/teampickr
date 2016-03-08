@@ -2,10 +2,11 @@
 <head>
     <meta charset="UTF-8">
     <title>teampickr</title>
-    <script type="text/javascript" src="/js/base.js"></script>
     <link rel="stylesheet" href="teampickr.css">
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+<script type="text/javascript" src="/js/teampickr.js"></script>
+<script src="https://apis.google.com/js/client.js?onload=init"></script>
 <body >
 
 <div ng-app="myApp" ng-controller="myCtrl">
@@ -16,12 +17,9 @@
                 {{ player.id }}
             </span>
         </div>
-        <div id="outputLog" ></div>
 
-        <form action="javascript:void(0);">
-            <h2>Test API Call</h2>
-            <div><input id="listGreeting" type="submit" class="btn btn-small" value="Submit"></div>
-        </form>
+        <div> {{ message }} </div>
+        <button ng-click="load()">Reload...</button>
     </div>
 
     <table class="playingField" >
@@ -98,106 +96,12 @@
 
 
     <script type="text/javascript">
-        function init() {
-            google.devrel.samples.hello.init('//' + window.location.host + '/_ah/api');
-        }
     </script>
-    <script src="https://apis.google.com/js/client.js?onload=init"></script>
 
 </div>
 
 
 
-<script>
-    var app = angular.module('myApp', []);
-    app.controller('myCtrl', ['$scope', 'filterFilter', function ($scope) {
-
-
-        $scope.teamWhite = [];
-        $scope.teamRed = [];
-
-        $scope.autoAssign = function(){
-            var isRed = true;
-            angular.forEach($scope.players, function (player, key) {
-                if (player.playing && !player.team) {
-                    player.team = isRed ? 'red' : 'white';
-                    isRed = !isRed;
-                }
-            })
-        };
-
-        $scope.assignTeam = function(player,team){
-            player.team = team;
-        };
-
-        $scope.rankSwap = function (player1, player2) {
-            if (player2) {
-                var swap = player1.rank;
-                player1.rank = player2.rank;
-                player2.rank = swap;
-            }
-        };
-
-        $scope.players = [
-            {id: "Abhishek"},
-            {id: "Al"},
-            {id: "Aleks"},
-            {id: "Anthony"},
-            {id: "Chun"},
-            {id: "Dan"},
-            {id: "Darin"},
-            {id: "DavidC"},
-            {id: "DavidH"},
-            {id: "DavidS"},
-            {id: "Dom"},
-            {id: "Ed"},
-            {id: "Eric"},
-            {id: "Gary"},
-            {id: "Gowri"},
-            {id: "Marcos"},
-            {id: "MichaelS"},
-            {id: "MikeH"},
-            {id: "Ming"},
-            {id: "NickH"},
-            {id: "NikK"},
-            {id: "Paul"},
-            {id: "Peter"},
-            {id: "Raghu"},
-            {id: "Rudy"},
-            {id: "Senthil"},
-            {id: "Sibiao"},
-            {id: "Surkhab"},
-            {id: "Tanvir"},
-            {id: "Zareh"},
-        ];
-
-
-        angular.forEach($scope.players, function (value, key) {
-            value.playing=true;
-            value.rank = key;
-        })
-
-        var num = 6;
-
-        $scope.items = [5,4,3,2,1];
-
-        $scope.addNum = function (){
-            $scope.items.unshift(num++);
-        };
-
-        $scope.remNum = function (){
-            $scope.items.shift();
-        }
-
-
-    }
-
-    ]);
-
-
-    // curl --get --data-urlencode 'address=320 North Central Ave, Glendale, CA' 'https://maps.googleapis.com/maps/api/geocode/json?key='
-
-
-</script>
+<script></script>
 </body>
 </html>
