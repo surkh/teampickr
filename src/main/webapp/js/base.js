@@ -1,4 +1,3 @@
-
 /**
  * @fileoverview
  * Provides methods for the Hello Endpoints sample UI and interaction with the
@@ -107,7 +106,7 @@ google.devrel.samples.hello.getGreeting = function(id) {
  * Lists greetings via the API.
  */
 google.devrel.samples.hello.listGreeting = function() {
-  gapi.client.helloworld.greetings.listGreeting().execute(
+  gapi.client.helloworld.teams.listGreeting().execute(
       function(resp) {
         if (!resp.code) {
           resp.items = resp.items || [];
@@ -149,28 +148,28 @@ google.devrel.samples.hello.authedGreeting = function(id) {
  * Enables the button callbacks in the UI.
  */
 google.devrel.samples.hello.enableButtons = function() {
-  document.getElementById('getGreeting').onclick = function() {
-    google.devrel.samples.hello.getGreeting(
-        document.getElementById('id').value);
-  }
+  // document.getElementById('getGreeting').onclick = function() {
+  //   google.devrel.samples.hello.getGreeting(
+  //       document.getElementById('id').value);
+  // }
 
   document.getElementById('listGreeting').onclick = function() {
     google.devrel.samples.hello.listGreeting();
   }
 
-  document.getElementById('multiplyGreetings').onclick = function() {
-    google.devrel.samples.hello.multiplyGreeting(
-        document.getElementById('greeting').value,
-        document.getElementById('count').value);
-  }
+  // document.getElementById('multiplyGreetings').onclick = function() {
+  //   google.devrel.samples.hello.multiplyGreeting(
+  //       document.getElementById('greeting').value,
+  //       document.getElementById('count').value);
+  // }
 
-  document.getElementById('authedGreeting').onclick = function() {
-    google.devrel.samples.hello.authedGreeting();
-  }
+  // document.getElementById('authedGreeting').onclick = function() {
+  //   google.devrel.samples.hello.authedGreeting();
+  // }
   
-  document.getElementById('signinButton').onclick = function() {
-    google.devrel.samples.hello.auth();
-  }
+  // document.getElementById('signinButton').onclick = function() {
+  //   google.devrel.samples.hello.auth();
+  // }
 };
 
 /**

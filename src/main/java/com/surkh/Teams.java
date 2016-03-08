@@ -19,13 +19,13 @@ import javax.inject.Named;
     clientIds = {Constants.WEB_CLIENT_ID, Constants.ANDROID_CLIENT_ID, Constants.IOS_CLIENT_ID, Constants.API_EXPLORER_CLIENT_ID},
     audiences = {Constants.ANDROID_AUDIENCE}
 )
-public class Greetings {
+public class Teams {
 
   public static ArrayList<HelloGreeting> greetings = new ArrayList<HelloGreeting>();
 
   static {
-    greetings.add(new HelloGreeting("hello world!"));
-    greetings.add(new HelloGreeting("goodbye world!"));
+    greetings.add(new HelloGreeting("surkh"));
+    greetings.add(new HelloGreeting("darin"));
   }
 
   public HelloGreeting getGreeting(@Named("id") Integer id) throws NotFoundException {
