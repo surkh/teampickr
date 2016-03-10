@@ -236,10 +236,6 @@ app.controller('myCtrl', ['$scope', 'filterFilter', 'gapiService', function ($sc
     ];
 
     
-    angular.forEach($scope.players, function (value, key) {
-        value.playing=true;
-        value.rank = key;
-    })
 
     var num = 6;
 
@@ -264,7 +260,8 @@ app.controller('myCtrl', ['$scope', 'filterFilter', 'gapiService', function ($sc
                         $scope.players.push(
                             {
                                 id: item.id,
-                                playing: true
+                                playing: true,
+                                rank: key
                             }
                         )
                     });
