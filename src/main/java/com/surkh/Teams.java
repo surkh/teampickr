@@ -4,8 +4,15 @@ import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.response.NotFoundException;
 import com.google.appengine.api.users.User;
+import com.googlecode.objectify.Key;
+import com.googlecode.objectify.ObjectifyService;
+import com.surkh.model.Player;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import javax.inject.Named;
 
@@ -21,41 +28,21 @@ import javax.inject.Named;
 )
 public class Teams {
 
-  public static ArrayList<Player> players = new ArrayList<Player>();
+  public static ArrayList<Player> players;
 
   static {
-    players.add(new Player("surkh"));
-    players.add(new Player("darin"));
-    players.add(new Player("Abhishek"));
-    players.add(new Player("Al"));
-    players.add(new Player("Aleks"));
-    players.add(new Player("Anthony"));
-    players.add(new Player("Chun"));
-    players.add(new Player("Dan"));
-    players.add(new Player("Darin"));
-    players.add(new Player("DavidC"));
-    players.add(new Player("DavidH"));
-    players.add(new Player("DavidS"));
-    players.add(new Player("Dom"));
-    players.add(new Player("Ed"));
-    players.add(new Player("Eric"));
-    players.add(new Player("Gary"));
-    players.add(new Player("Gowri"));
-    players.add(new Player("Marcos"));
-    players.add(new Player("MichaelS"));
-    players.add(new Player("MikeH"));
-    players.add(new Player("Ming"));
-    players.add(new Player("NickH"));
-    players.add(new Player("NikK"));
-    players.add(new Player("Paul"));
-    players.add(new Player("Peter"));
-    players.add(new Player("Raghu"));
-    players.add(new Player("Rudy"));
-    players.add(new Player("Senthil"));
-    players.add(new Player("Sibiao"));
-    players.add(new Player("Surkhab"));
-    players.add(new Player("Tanvir"));
-    players.add(new Player("Zareh"));
+    ObjectifyService.register(Player.class);
+    reloadList();
+
+
+  }
+
+  private static void reloadList() {
+    List<Player> list = ObjectifyService.ofy().load().type(Player.class).list();
+
+    players = new ArrayList<Player>();
+    players.addAll(list);
+
   }
 
   public Player getGreeting(@Named("id") Integer id) throws NotFoundException {
@@ -67,6 +54,7 @@ public class Teams {
   }
 
   public ArrayList<Player> listGreeting() {
+    reloadList();
     return players;
   }
 

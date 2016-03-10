@@ -1,8 +1,12 @@
-package com.surkh;
+package com.surkh.model;
 
+import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Id;
+
+@Entity
 public class Player {
 
-  public String id;
+  @Id public String id;
 
   public Player() {};
 
