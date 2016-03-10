@@ -33,11 +33,12 @@ public class Teams {
   static {
     ObjectifyService.register(Player.class);
     reloadList();
+//    bootstrapList();
 
 
   }
 
-  void bootstrapList() {
+  static void bootstrapList() {
     reloadList();
     String[] x = new String[]{
         "Abhishek",
