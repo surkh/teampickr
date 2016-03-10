@@ -196,6 +196,8 @@ app.controller('myCtrl', ['$scope', 'filterFilter', 'gapiService', function ($sc
 
     var postInitiation = function() {
         $scope.load();
+        $scope.loadMessage();
+        
 
     }
 
@@ -271,6 +273,21 @@ app.controller('myCtrl', ['$scope', 'filterFilter', 'gapiService', function ($sc
                 }
             });
     };
+    
+    $scope.loadMessage = function () {
+        $scope.message = "Loading...";
+        $scope.$applyAsync();
+        gapi.client.helloworld.teams.myMessage().execute(
+            function(resp) {
+                if (!resp.code) {
+                    $scope.message = "";
+                    angular.forEach(resp.items, function (item, key) {
+                        $scope.message += item;
+                    });
+                    $scope.$applyAsync();
+                }
+            });
+    }
     
     // $scope.load();
 

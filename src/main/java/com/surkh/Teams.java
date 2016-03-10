@@ -104,7 +104,8 @@ public class Teams {
   }
 
   public String[] myMessage() {
-    return new String[]{"This is my message"};
+    return new String[]{"This is my message",
+    "And this is another"};
   }
 
   @ApiMethod(name = "greetings.multiply", httpMethod = "post")
