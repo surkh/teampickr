@@ -37,6 +37,51 @@ public class Teams {
 
   }
 
+  void bootstrapList() {
+    reloadList();
+    String[] x = new String[]{
+        "Abhishek",
+        "Al",
+        "Aleks",
+        "Anthony",
+        "Chun",
+        "Dan",
+        "Darin",
+        "DavidC",
+        "DavidH",
+        "DavidS",
+        "Dom",
+        "Ed",
+        "Eric",
+        "Gary",
+        "Gowri",
+        "Marcos",
+        "MichaelS",
+        "MikeH",
+        "Ming",
+        "NickH",
+        "NikK",
+        "Paul",
+        "Peter",
+        "Raghu",
+        "Rudy",
+        "Senthil",
+        "Sibiao",
+        "Surkhab",
+        "Tanvir",
+        "Zareh"};
+
+    Set<Player> playerHashSet = new HashSet<>(players);
+    for (String s : x) {
+      Player p = new Player(s);
+      if (!playerHashSet.contains(p)) {
+        ObjectifyService.ofy().save().entities(new Player(s)).now();
+      }
+    }
+
+  }
+
+
   private static void reloadList() {
     List<Player> list = ObjectifyService.ofy().load().type(Player.class).list();
 
